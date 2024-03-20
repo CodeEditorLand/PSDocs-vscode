@@ -1,92 +1,80 @@
 {
-  "name": "psdocs-vscode",
-  "displayName": "PSDocs.Azure (Preview)",
-  "publisher": "vicperdana",
-  "description": "Generate Markdown from ARM templates using PSDocs.Azure",
-  "author": {
-    "name": "Vic Perdana"
-  },
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "1.85.0"
-  },
-  "license": "SEE LICENSE IN LICENSE",
-  "categories": [
-    "Programming Languages",
-    "Snippets"
-  ],
-  "keywords": [
-    "Azure Template",
-    "Azure",
-    "ARM",
-    "Resource Manager",
-    "PSDocs.Azure"
-  ],
-  "galleryBanner": {
-    "color": "#0072c6",
-    "theme": "dark"
-  },
-  "icon": "images/psdocs-icon.png",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Microsoft/PSDocs-vscode.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Microsoft/PSDocs-vscode/issues"
-  },
-  "activationEvents": [
-    "onCommand:vicperdana.psdocs-vscode-preview"
-  ],
-  "private": true,
-  "preview": true,
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "vicperdana.psdocs-vscode-preview",
-        "title": "PSDocs.Azure: Generate Markdown"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "arm-template",
-        "path": "./snippets/arm.json"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run -S esbuild-base -- --minify",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "pack": "vsce package",
-    "publish": "vsce publish",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-    "esbuild": "npm run -S esbuild-base -- --sourcemap",
-    "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
-  },
-  "extensionDependencies": [
-    "vscode.powershell",
-    "ms-vscode.powershell",
-    "msazurermtools.azurerm-vscode-tools"
-  ],
-  "devDependencies": {
-    "@types/glob": "8.1.0",
-    "@types/mocha": "10.0.6",
-    "@types/node": "20.11.30",
-    "@types/vscode": "1.87.0",
-    "@typescript-eslint/eslint-plugin": "7.3.1",
-    "@typescript-eslint/parser": "7.3.1",
-    "esbuild": "0.20.2",
-    "eslint": "8.57.0",
-    "glob": "10.3.10",
-    "mocha": "10.3.0",
-    "typescript": "5.4.2",
-    "vscode-test": "1.6.1"
-  },
-  "dependencies": {
-    "@vscode/vsce": "2.24.0"
-  }
+	"name": "psdocs-vscode",
+	"displayName": "PSDocs.Azure (Preview)",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Generate Markdown from ARM templates using PSDocs.Azure",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "./out/extension.js",
+	"scripts": {
+		"compile": "tsc -p ./",
+		"esbuild": "npm run -S esbuild-base -- --sourcemap",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
+		"pack": "vsce package",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"publish": "vsce publish",
+		"vscode:prepublish": "npm run -S esbuild-base -- --minify",
+		"watch": "tsc -watch -p ./"
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "vicperdana.psdocs-vscode-preview",
+				"title": "PSDocs.Azure: Generate Markdown"
+			}
+		],
+		"snippets": [
+			{
+				"language": "arm-template",
+				"path": "./snippets/arm.json"
+			}
+		]
+	},
+	"activationEvents": [
+		"onCommand:vicperdana.psdocs-vscode-preview"
+	],
+	"dependencies": {
+		"@vscode/vsce": "2.24.0"
+	},
+	"devDependencies": {
+		"@types/glob": "8.1.0",
+		"@types/mocha": "10.0.6",
+		"@types/node": "20.11.30",
+		"@types/vscode": "1.87.0",
+		"esbuild": "0.20.2",
+		"glob": "10.3.10",
+		"mocha": "10.3.0",
+		"typescript": "5.4.2",
+		"typescript-esbuild": "latest",
+		"vscode-test": "1.6.1"
+	},
+	"extensionDependencies": [
+		"ms-vscode.powershell",
+		"msazurermtools.azurerm-vscode-tools",
+		"vscode.powershell"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"icon": "images/psdocs-icon.png",
+	"galleryBanner": {
+		"color": "#0072c6",
+		"theme": "dark"
+	},
+	"preview": true
 }
