@@ -1,36 +1,7 @@
 {
-	"name": "psdocs-vscode",
-	"displayName": "PSDocs.Azure (Preview)",
-	"version": "0.0.1",
-	"private": false,
-	"description": "Generate Markdown from ARM templates using PSDocs.Azure",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
-	},
-	"type": "module",
-	"main": "./out/extension.js",
-	"scripts": {
-		"compile": "tsc -p ./",
-		"esbuild": "npm run -S esbuild-base -- --sourcemap",
-		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-		"esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
-		"pack": "vsce package",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"publish": "vsce publish",
-		"vscode:prepublish": "npm run -S esbuild-base -- --minify",
-		"watch": "tsc -watch -p ./"
-	},
+	"activationEvents": [
+		"onCommand:vicperdana.psdocs-vscode-preview"
+	],
 	"contributes": {
 		"commands": [
 			{
@@ -45,12 +16,10 @@
 			}
 		]
 	},
-	"activationEvents": [
-		"onCommand:vicperdana.psdocs-vscode-preview"
-	],
 	"dependencies": {
 		"@vscode/vsce": "2.24.0"
 	},
+	"description": "Generate Markdown from ARM templates using PSDocs.Azure",
 	"devDependencies": {
 		"@types/glob": "8.1.0",
 		"@types/mocha": "10.0.6",
@@ -63,18 +32,30 @@
 		"typescript-esbuild": "0.4.5",
 		"vscode-test": "1.6.1"
 	},
+	"displayName": "PSDocs.Azure (Preview)",
 	"extensionDependencies": [
 		"ms-vscode.powershell",
 		"msazurermtools.azurerm-vscode-tools",
 		"vscode.powershell"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"icon": "images/psdocs-icon.png",
 	"galleryBanner": {
 		"color": "#0072c6",
 		"theme": "dark"
 	},
-	"preview": true
+	"icon": "images/psdocs-icon.png",
+	"main": "./out/extension.js",
+	"name": "psdocs-vscode",
+	"preview": true,
+	"scripts": {
+		"compile": "tsc -p ./",
+		"esbuild": "npm run -S esbuild-base -- --sourcemap",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
+		"pack": "vsce package",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"publish": "vsce publish",
+		"vscode:prepublish": "npm run -S esbuild-base -- --minify",
+		"watch": "tsc -watch -p ./"
+	},
+	"type": "module"
 }
