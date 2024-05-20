@@ -1,52 +1,92 @@
 {
-	"name": "psdocs-vscode",
-	"displayName": "PSDocs.Azure (Preview)",
-	"description": "Generate Markdown from ARM templates using PSDocs.Azure",
-	"main": "./out/extension.js",
-	"scripts": {
-		"Document": "Document 'Source/**/*.ts'",
-		"compile": "tsc -p ./",
-		"esbuild": "npm run -S esbuild-base -- --sourcemap",
-		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-		"esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
-		"pack": "vsce package",
-		"prepublishOnly": "Build 'Source/**/*.ts'",
-		"publish": "vsce publish"
-	},
-	"contributes": {
-		"commands": [
-			{
-				"command": "vicperdana.psdocs-vscode-preview",
-				"title": "PSDocs.Azure: Generate Markdown"
-			}
-		],
-		"snippets": [
-			{
-				"language": "arm-template",
-				"path": "./snippets/arm.json"
-			}
-		]
-	},
-	"activationEvents": [
-		"onCommand:vicperdana.psdocs-vscode-preview"
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"@playform/build": "0.0.7",
-		"@types/glob": "8.1.0",
-		"@types/node": "20.12.10",
-		"esbuild": "0.20.2",
-		"glob": "10.3.12"
-	},
-	"extensionDependencies": [
-		"ms-vscode.powershell",
-		"msazurermtools.azurerm-vscode-tools",
-		"vscode.powershell"
-	],
-	"icon": "images/psdocs-icon.png",
-	"galleryBanner": {
-		"color": "#0072c6",
-		"theme": "dark"
-	},
-	"preview": true
+  "name": "psdocs-vscode",
+  "displayName": "PSDocs.Azure (Preview)",
+  "publisher": "vicperdana",
+  "description": "Generate Markdown from ARM templates using PSDocs.Azure",
+  "author": {
+    "name": "Vic Perdana"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "Azure Template",
+    "Azure",
+    "ARM",
+    "Resource Manager",
+    "PSDocs.Azure"
+  ],
+  "galleryBanner": {
+    "color": "#0072c6",
+    "theme": "dark"
+  },
+  "icon": "images/psdocs-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/PSDocs-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Microsoft/PSDocs-vscode/issues"
+  },
+  "activationEvents": [
+    "onCommand:vicperdana.psdocs-vscode-preview"
+  ],
+  "private": true,
+  "preview": true,
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vicperdana.psdocs-vscode-preview",
+        "title": "PSDocs.Azure: Generate Markdown"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "arm-template",
+        "path": "./snippets/arm.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run -S esbuild-base -- --minify",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "pack": "vsce package",
+    "publish": "vsce publish",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run -S esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch"
+  },
+  "extensionDependencies": [
+    "vscode.powershell",
+    "ms-vscode.powershell",
+    "msazurermtools.azurerm-vscode-tools"
+  ],
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.19",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^6.19.1",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.3.3",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^2.23.0"
+  }
 }
