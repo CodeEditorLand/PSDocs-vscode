@@ -31,9 +31,9 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@types/glob": "8.1.0",
-		"@types/node": "20.11.19",
-		"esbuild": "0.20.0",
-		"glob": "10.3.10"
+		"@types/node": "20.12.12",
+		"esbuild": "0.21.3",
+		"glob": "10.3.15"
 	},
 	"extensionDependencies": [
 		"ms-vscode.powershell",
