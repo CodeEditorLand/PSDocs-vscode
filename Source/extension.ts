@@ -4,16 +4,16 @@ import path = require("path");
 import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand(
+	const disposable = vscode.commands.registerCommand(
 		"vicperdana.psdocs-vscode-preview",
-		function () {
+		() => {
 			var currentlyOpenFilePath =
 				vscode.window.activeTextEditor?.document.uri.fsPath;
 
 			var templatePath = "";
 			var outputPath = "";
 			var templateFolderPath = "";
-			let options: vscode.InputBoxOptions = {
+			const options: vscode.InputBoxOptions = {
 				prompt: "Full path to the ARM template: ",
 				value: `${currentlyOpenFilePath}`,
 			};
@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if (!value) return;
 				templatePath = value;
 				templateFolderPath = path.dirname(templatePath);
-				let options: vscode.InputBoxOptions = {
+				const options: vscode.InputBoxOptions = {
 					prompt: "Output Path of the Markdown (relative path from the ARM template file): ",
 					value: "out\\docs\\",
 				};
