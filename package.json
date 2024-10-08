@@ -20,7 +20,7 @@
 	"description": "Generate Markdown from ARM templates using PSDocs.Azure",
 	"devDependencies": {
 		"@types/glob": "8.1.0",
-		"@types/node": "22.7.4",
+		"@types/node": "22.7.5",
 		"esbuild": "0.24.0",
 		"glob": "11.0.0"
 	},
