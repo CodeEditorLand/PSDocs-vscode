@@ -12,8 +12,11 @@ export function activate(context: vscode.ExtensionContext) {
 				vscode.window.activeTextEditor?.document.uri.fsPath;
 
 			var templatePath = "";
+
 			var outputPath = "";
+
 			var templateFolderPath = "";
+
 			let options: vscode.InputBoxOptions = {
 				prompt: "Full path to the ARM template: ",
 				value: `${currentlyOpenFilePath}`,
@@ -23,6 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if (!value) return;
 				templatePath = value;
 				templateFolderPath = path.dirname(templatePath);
+
 				let options: vscode.InputBoxOptions = {
 					prompt: "Output Path of the Markdown (relative path from the ARM template file): ",
 					value: "out\\docs\\",
@@ -32,12 +36,14 @@ export function activate(context: vscode.ExtensionContext) {
 					outputPath = value;
 
 					const { exec } = require("child_process");
+
 					var message = "";
 					exec(
 						`Import-Module PSDocs.Azure; Invoke-PSDocument -Module PSDocs.Azure -InputObject ${templatePath} -OutputPath ${templateFolderPath}/${outputPath};`,
 						{ shell: "pwsh" },
 						(error: any, stdout: any, stderr: any) => {
 							message = stderr;
+
 							if (message !== "") {
 								vscode.window.showErrorMessage(message);
 							} else {
