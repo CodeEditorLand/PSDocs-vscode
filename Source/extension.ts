@@ -24,20 +24,25 @@ export function activate(context: vscode.ExtensionContext) {
 
 			vscode.window.showInputBox(options).then((value) => {
 				if (!value) return;
+
 				templatePath = value;
+
 				templateFolderPath = path.dirname(templatePath);
 
 				let options: vscode.InputBoxOptions = {
 					prompt: "Output Path of the Markdown (relative path from the ARM template file): ",
 					value: "out\\docs\\",
 				};
+
 				vscode.window.showInputBox(options).then((value) => {
 					if (!value) return;
+
 					outputPath = value;
 
 					const { exec } = require("child_process");
 
 					var message = "";
+
 					exec(
 						`Import-Module PSDocs.Azure; Invoke-PSDocument -Module PSDocs.Azure -InputObject ${templatePath} -OutputPath ${templateFolderPath}/${outputPath};`,
 						{ shell: "pwsh" },
